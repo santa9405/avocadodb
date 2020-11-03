@@ -45,6 +45,7 @@ GROUP BY DEPT_CODE
 ORDER BY DEPT_CODE DESC NULLS LAST;
 
 
+
 --EMPLOYEE 테이블에서
 -- 각 성별의 급여 평균, 급여 합, 인원 수를
 -- 인원 수 내림차순으로 조회
