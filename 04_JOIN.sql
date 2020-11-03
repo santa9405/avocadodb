@@ -373,6 +373,7 @@ LEFT JOIN EMPLOYEE C ON(E.DEPT_CODE = C.DEPT_CODE)
 WHERE E.EMP_NAME != C.EMP_NAME
 ORDER BY 1;
 
+
 -- 9. 보너스포인트가 없는 직원들 중에서 직급코드가 J4와 J7인 직원들의 사원명, 직급명, 급여를 조회하시오
 -- 단, JOIN, IN 사용할 것
 SELECT EMP_NAME, JOB_NAME, SALARY
