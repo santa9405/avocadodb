@@ -215,7 +215,6 @@ VALUES(2,'USER02','PASS02','가나다','남','010-1111-2222','USER01@naver.com');
  - 컬럼 입력값에 대해서 중복을 제한하는 제약 조건
  - 컬럼/테이블 레벨에서 제약 조건 설정 가능
  - 단, UNIQUE 제약 조건이 설정된 컬럼에는 NULL 값 중복은 가능하다
- 
 */
 
 
@@ -392,7 +391,7 @@ WHERE C1.TABLE_NAME = 'CONS_NAME';
 
 /* 3. PRIMARY KEY(기본키) 제약 조건 
     - 테이블에서 한 행의 정보를 찾기 위해 사용할 컬럼을 의미함
-     -> 테이블에 대한 식별자(IDENTIFIER) 역할을 함
+     -> 테이블의 모든 행에 대한 식별자(IDENTIFIER) 역할을 함
      
     - NOT NULL + UNIQUE 제약 조건의 의미를 가지고 있음 
     
@@ -858,6 +857,66 @@ VALUES (5, 'user05', 'pass05', '920522-2234567', '여', '010-5555-9999', '서울시 
 SELECT * FROM USER_TEST;
 
 COMMIT;
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+-- 서브쿼리를 이용한 테이블 생성
+  --> 컬럼명, 데이터 타입, 컬럼 값이 복사되고,
+  --  제약조건은 NOT NULL만 복사됨
+  
+CREATE TABLE EMPLOYEE_COPY
+AS SELECT * FROM EMPLOYEE;
+
+SELECT * FROM EMPLOYEE_COPY;
+
+-- 사번, 이름, 급여, 부서명, 직급명으로 이루어진
+-- EMPLOYEE_COPY2 테이블을 생성하고 데이터 복사
+CREATE TABLE EMPLOYEE_COPY2
+AS
+SELECT EMP_ID, EMP_NAME, SALARY, DEPT_TITLE, JOB_NAME
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON(DEPT_CODE=DEPT_ID)
+LEFT JOIN JOB USING(JOB_CODE);
+
+SELECT * FROM EMPLOYEE_COPY2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
