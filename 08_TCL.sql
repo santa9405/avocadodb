@@ -2,7 +2,7 @@
 
   - COMMIT (트랜잭션 종료 처리 후 저장)
   - ROLLBACK (트랜잭션 취소)
-  -SAVEPOINT (임시 저장)
+  - SAVEPOINT (임시 저장)
 
    Transaction이란? (★★★★★)
     
