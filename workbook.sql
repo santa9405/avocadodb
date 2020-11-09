@@ -104,9 +104,71 @@ JOIN TB_STUDENT USING(STUDENT_NO)
 WHERE STUDENT_NAME = '한아름';
 
 -- 10번
+SELECT DEPARTMENT_NO 학과번호, COUNT(STUDENT_NO) "학생수(명)"
+FROM TB_STUDENT
+GROUP BY DEPARTMENT_NO
+ORDER BY 1;
+
+-- 11번
+SELECT COUNT(*)
+FROM TB_STUDENT
+WHERE COACH_PROFESSOR_NO IS NULL;
+
+-- 12번
+SELECT SUBSTR(TERM_NO,1,4)년도,ROUND(AVG(POINT),1)"년도 별 평점"
+FROM TB_GRADE
+WHERE STUDENT_NO = 'A112113'
+GROUP BY SUBSTR(TERM_NO,1,4)
+ORDER BY 1;
+
+
+
+-- 18번
+
+-- 국어국문학과의 학과 번호
 SELECT DEPARTMENT_NO
 FROM TB_DEPARTMENT
-JOIN 
+WHERE DEPARTMENT_NAME='국어국문학과';
+
+-- 국어국문학과 학생들의 학번, 이름, 평점
+SELECT STUDENT_NO, STUDENT_NAME
+FROM (SELECT STUDENT_NO, STUDENT_NAME, AVG(POINT) 평점
+            FROM TB_STUDENT
+            JOIN TB_GRADE USING(STUDENT_NO)
+            WHERE DEPARTMENT_NO = (SELECT DEPARTMENT_NO
+                                                     FROM TB_DEPARTMENT
+                                                    WHERE DEPARTMENT_NAME='국어국문학과')
+            GROUP BY STUDENT_NO, STUDENT_NAME
+            ORDER BY 평점 DESC)
+WHERE ROWNUM = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

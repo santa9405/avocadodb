@@ -86,12 +86,11 @@ FROM EMPLOYEE;
 -- 리터럴의 표기 기호는 ''(홀따옴표)
 -- 리터럴은 RESULT SET의 모든 결과 행에 반복적으로 표시됨 
 
--- EMPLOYEE 테이블에서
+-- EMPLOYEE 테이블에서 
 -- 사번, 사원명, 급여, 단위(데이터 : 원) 조회
 SELECT EMP_ID, EMP_NAME, SALARY,
         '원' AS 단위
 FROM EMPLOYEE;
-
 
 -- DISTINCT
 -- 컬럼에 포함된 중복 값을 한 번만 표시하고자 할 때 사용
